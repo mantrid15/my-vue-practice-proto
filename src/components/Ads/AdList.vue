@@ -39,6 +39,9 @@
     computed: {
       myAds () {
         return this.$store.getters.myAds
+      },
+      loading () {
+        return this.$store.getters.loading
       }
     }
   }

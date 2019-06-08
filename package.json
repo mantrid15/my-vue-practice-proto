@@ -1,14 +1,14 @@
 {
   "name": "ad-project",
   "version": "1.0.0",
-  "private": true,
   "description": "A Vue.js project",
-  "author": "Vladilen",
+  "author": "Mantrid",
+  "private": true,
   "scripts": {
-    "build": "node build/build.js",
-    "lint": "eslint --ext .js,.vue src",
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "npm run dev"
+    "start": "npm run dev",
+    "lint": "eslint --ext .js,.vue src",
+    "build": "node build/build.js"
   },
   "dependencies": {
     "firebase": "^6.1.1",

@@ -1,7 +1,7 @@
 import * as fb from 'firebase'
 
 class Ad {
-  constructor (title, description, ownerId, imageSrc = '', promo = false, id = null ) {
+  constructor (title, description, ownerId, imageSrc = '', promo = false, id = null) {
     this.title = title
     this.description = description
     this.ownerId = ownerId
@@ -48,15 +48,21 @@ export default {
       commit('setLoading', true)
 
       try {
-        cons newAd = new Ad(
+        const newAd = new Ad(
           payload.title,
           payload.description,
           getters.user.id,
           payload.imageSrc,
           payload.promo
         )
-        const fbValue = await b.databse().ref('ads').push
-        console.log(fbValue);
+
+        const ad = await fb.database().ref('ads').push(newAd)
+
+        commit('setLoading', false)
+        commit('createAd', {
+          ...newAd,
+          id: ad.key
+        })
       } catch (error) {
         commit('setError', error.message)
         commit('setLoading', false)
@@ -70,11 +76,13 @@ export default {
     },
     promoAds (state) {
       return state.ads.filter(ad => {
-        return ad.promo === true
+        return ad.promo
       })
     },
     myAds (state) {
-      return state.ads
+      return state.ads.filter(ad => {
+        // return ad.ownerId === getters.user.id
+      })
     },
     adById (state) {
       return adId => {
