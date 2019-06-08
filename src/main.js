@@ -25,8 +25,8 @@ new Vue({
       databaseURL: 'https://prototype-linkparser.firebaseio.com',
       projectId: 'prototype-linkparser',
       storageBucket: 'prototype-linkparser.appspot.com',
-      messagingSenderId: '987864566347',
-      appId: '1:987864566347:web:3898cea483caae81'
+      messagingSenderId: '987864566347'
+      // appId: '1:987864566347:web:3898cea483caae81'
     })
     fb.auth().onAuthStateChanged(user => {
       if (user) {

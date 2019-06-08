@@ -7,11 +7,7 @@
             <v-toolbar-title>Registration form</v-toolbar-title>
           </v-toolbar>
           <v-card-text>
-            <v-form
-              v-model="valid"
-              ref="form"
-              lazy-validation
-            >
+            <v-form v-model="valid" ref="form" lazy-validation>
               <v-text-field
                 prepend-icon="person"
                 name="email"
@@ -25,17 +21,17 @@
                 name="password"
                 label="Password"
                 type="password"
-                v-model="password"
                 :counter="6"
+                v-model="password"
                 :rules="passwordRules"
               ></v-text-field>
               <v-text-field
                 prepend-icon="lock"
                 name="confirm-password"
-                label="Confirm password"
+                label="Confirm Password"
                 type="password"
-                v-model="confirmPassword"
                 :counter="6"
+                v-model="confirmPassword"
                 :rules="confirmPasswordRules"
               ></v-text-field>
             </v-form>
@@ -47,28 +43,31 @@
               @click="onSubmit"
               :loading="loading"
               :disabled="!valid || loading"
-            >Create account</v-btn>
+            >Create account!</v-btn>
           </v-card-actions>
         </v-card>
       </v-flex>
     </v-layout>
   </v-container>
 </template>
+
 <script>
+  const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
+
   export default {
     data () {
       return {
         email: '',
         password: '',
-        valid: false,
         confirmPassword: '',
+        valid: false,
         emailRules: [
           v => !!v || 'E-mail is required',
-          v => /.+@.+/.test(v) || 'E-mail must be valid'
+          v => emailRegex.test(v) || 'E-mail must be valid'
         ],
         passwordRules: [
           v => !!v || 'Password is required',
-          v => (v && v.length >= 6) || `Password must be less than 6 characters`
+          v => (v && v.length >= 6) || 'Password must be equal or more than 6 characters'
         ],
         confirmPasswordRules: [
           v => !!v || 'Password is required',
@@ -88,6 +87,7 @@
             email: this.email,
             password: this.password
           }
+
           this.$store.dispatch('registerUser', user)
             .then(() => {
               this.$router.push('/')
@@ -98,5 +98,3 @@
     }
   }
 </script>
-<style scoped>
-</style>

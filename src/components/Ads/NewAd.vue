@@ -12,50 +12,50 @@
             required
             :rules="[v => !!v || 'Title is required']"
           ></v-text-field>
-          <v-textarea
+          <v-text-field
             name="description"
             label="Ad description"
             type="text"
             v-model="description"
             multi-line
             :rules="[v => !!v || 'Description is required']"
-          ></v-textarea>
+          ></v-text-field>
         </v-form>
-          <v-layout row class="mb-3">
-            <v-flex xs12>
-              <v-btn class="warning">
-                Upload
-                <v-icon right dark>cloud_upload</v-icon>
-              </v-btn>
-            </v-flex>
-          </v-layout>
-          <v-layout row>
-            <v-flex xs12>
-              <img src="imageSrc" height="100" v-if="imageSrc">
-            </v-flex>
-          </v-layout>
-          <v-layout row>
-            <v-flex xs12>
-              <v-switch
-               label="Add to promo?"
-               v-model="promo"
-               color="primary"
-              ></v-switch>
-            </v-flex>
-          </v-layout>
-          <v-layout row>
-            <v-flex xs12>
-             <v-spacer></v-spacer>
-              <v-btn
-                :loading="loading"
-                :disabled="!valid || loading"
-                class="success"
-                @click="createAd"
-              >
-                Create ad
-              </v-btn>
-            </v-flex>
-          </v-layout>
+        <v-layout row class="mb-3">
+          <v-flex xs12>
+            <v-btn class="warning">
+              Upload
+              <v-icon right dark>cloud_upload</v-icon>
+            </v-btn>
+          </v-flex>
+        </v-layout>
+        <v-layout row>
+          <v-flex xs12>
+            <img src="" height="100">
+          </v-flex>
+        </v-layout>
+        <v-layout row>
+          <v-flex xs12>
+            <v-switch
+              label="Add to promo?"
+              v-model="promo"
+              color="primary"
+            ></v-switch>
+          </v-flex>
+        </v-layout>
+        <v-layout row>
+          <v-flex xs12>
+            <v-spacer></v-spacer>
+            <v-btn
+              :loading="loading"
+              :disabled="!valid || loading"
+              class="success"
+              @click="createAd"
+            >
+              Create ad
+            </v-btn>
+          </v-flex>
+        </v-layout>
       </v-flex>
     </v-layout>
   </v-container>
@@ -68,9 +68,7 @@
         title: '',
         description: '',
         promo: false,
-        valid: false,
-        image: null,
-        imageSrc: ''
+        valid: false
       }
     },
     computed: {
@@ -80,12 +78,12 @@
     },
     methods: {
       createAd () {
-        if (this.$refs.form.validate() && this.image) {
+        if (this.$refs.form.validate()) {
           const ad = {
             title: this.title,
             description: this.description,
             promo: this.promo,
-            imageSrc: 'https://proglib.io/wp-content/uploads/2018/07/1_qnI8K0Udjw4lciWDED4HGw.png'
+            imageSrc: 'https://cdn-images-1.medium.com/max/850/1*nq9cdMxtdhQ0ZGL8OuSCUQ.jpeg'
           }
 
           this.$store.dispatch('createAd', ad)

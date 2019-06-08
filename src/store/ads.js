@@ -16,21 +16,21 @@ export default {
     ads: [
       {
         title: 'First ad',
-        description: 'Hi, itis description',
+        description: 'Hi, it is description',
         promo: false,
         imageSrc: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg',
         id: '001'
       },
       {
         title: 'Second ad',
-        description: 'Hi, itis description',
+        description: 'Hi, it is description',
         promo: true,
         imageSrc: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
         id: '002'
       },
       {
         title: 'Third ad',
-        description: 'Hi, itis description',
+        description: 'Hi, it is description',
         promo: true,
         imageSrc: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
         id: '003'
@@ -80,9 +80,7 @@ export default {
       })
     },
     myAds (state) {
-      return state.ads.filter(ad => {
-        // return ad.ownerId === getters.user.id
-      })
+      return state.ads
     },
     adById (state) {
       return adId => {
