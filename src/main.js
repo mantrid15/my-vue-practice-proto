@@ -20,12 +20,12 @@ new Vue({
   template: '<App/>',
   created () {
     fb.initializeApp({
-      apiKey: 'AIzaSyDQg59N9hq0llHhxCfWue6f3jEtQxbD3mc',
-      authDomain: 'prototype-linkparser.firebaseapp.com',
-      databaseURL: 'https://prototype-linkparser.firebaseio.com',
-      projectId: 'prototype-linkparser',
-      storageBucket: 'prototype-linkparser.appspot.com',
-      messagingSenderId: '987864566347'
+      apiKey: 'AIzaSyCne2-0cWfntWHgTVCpA1chlHalfJEhWkU',
+      authDomain: 'my-link-parser2090610.firebaseapp.com',
+      databaseURL: 'https://my-link-parser2090610.firebaseio.com',
+      projectId: 'my-link-parser2090610',
+      storageBucket: 'my-link-parser2090610.appspot.com',
+      messagingSenderId: '287867559943'
       // appId: '1:987864566347:web:3898cea483caae81'
     })
     fb.auth().onAuthStateChanged(user => {
