@@ -57,6 +57,7 @@ export default {
         )
 
         const ad = await fb.database().ref('ads').push(newAd)
+        console.log(ad)
 
         commit('setLoading', false)
         commit('createAd', {

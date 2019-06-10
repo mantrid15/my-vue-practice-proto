@@ -12,14 +12,14 @@
             required
             :rules="[v => !!v || 'Title is required']"
           ></v-text-field>
-          <v-text-field
+          <v-textarea
             name="description"
             label="Ad description"
             type="text"
             v-model="description"
             multi-line
             :rules="[v => !!v || 'Description is required']"
-          ></v-text-field>
+          ></v-textarea>
         </v-form>
         <v-layout row class="mb-3">
           <v-flex xs12>
