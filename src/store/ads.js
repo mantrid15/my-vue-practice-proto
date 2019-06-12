@@ -26,6 +26,7 @@ export default {
       const ad = state.ads.find(a => {
         return a.id === id
       })
+
       ad.title = title
       ad.description = description
     }
@@ -50,9 +51,9 @@ export default {
         const imageExt = image.name.slice(image.name.lastIndexOf('.'))
 
         const fileData = await fb.storage().ref(`ads/${ad.key}.${imageExt}`).put(image)
-       // const imageSrc = fileData.metadata.downloadURLs[0]
-        const imageSrc = await fileData.ref.getDownloadURL()
+        const imageSrc = fileData.metadata.downloadURLs[0]
 
+        // const imageSrc = await fileData.ref.getDownloadURL()
         await fb.database().ref('ads').child(ad.key).update({
           imageSrc
         })
@@ -61,7 +62,7 @@ export default {
         commit('createAd', {
           ...newAd,
           id: ad.key,
-          imageSrc: imageSrc
+          imageSrc
         })
       } catch (error) {
         commit('setError', error.message)
