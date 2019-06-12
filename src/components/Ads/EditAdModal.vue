@@ -45,6 +45,7 @@
     </v-card>
   </v-dialog>
 </template>
+
 <script>
 export default {
   props: ['ad'],
@@ -68,6 +69,7 @@ export default {
           description: this.editedDescription,
           id: this.ad.id
         })
+
         this.modal = false
       }
     }
