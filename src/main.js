@@ -1,11 +1,10 @@
-
 import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
 import Vuetify from 'vuetify'
-import 'vuetify/dist/vuetify.min.css'
 import * as fb from 'firebase'
+import 'vuetify/dist/vuetify.min.css'
 
 Vue.use(Vuetify)
 
@@ -16,7 +15,7 @@ new Vue({
   el: '#app',
   router,
   store,
-  components: {App},
+  components: { App },
   template: '<App/>',
   created () {
     fb.initializeApp({
@@ -26,13 +25,14 @@ new Vue({
       projectId: 'my-link-parser2090610',
       storageBucket: 'my-link-parser2090610.appspot.com',
       messagingSenderId: '287867559943'
-      // appId: '1:987864566347:web:3898cea483caae81'
     })
+
     fb.auth().onAuthStateChanged(user => {
       if (user) {
         this.$store.dispatch('autoLoginUser', user)
       }
     })
+
     this.$store.dispatch('fetchAds')
   }
 })

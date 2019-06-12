@@ -21,6 +21,13 @@ export default {
     },
     loadAds (state, payload) {
       state.ads = payload
+    },
+    updateAd (state, {title, description, id}) {
+      const ad = state.ads.find(a => {
+        return a.id === id
+      })
+      ad.title = title
+      ad.description = description
     }
   },
   actions: {
@@ -43,7 +50,8 @@ export default {
         const imageExt = image.name.slice(image.name.lastIndexOf('.'))
 
         const fileData = await fb.storage().ref(`ads/${ad.key}.${imageExt}`).put(image)
-        const imageSrc = fileData.metadata.downloadURLs[0]
+       // const imageSrc = fileData.metadata.downloadURLs[0]
+        const imageSrc = await fileData.ref.getDownloadURL()
 
         await fb.database().ref('ads').child(ad.key).update({
           imageSrc
@@ -53,7 +61,7 @@ export default {
         commit('createAd', {
           ...newAd,
           id: ad.key,
-          imageSrc
+          imageSrc: imageSrc
         })
       } catch (error) {
         commit('setError', error.message)
@@ -80,6 +88,23 @@ export default {
 
         commit('loadAds', resultAds)
         commit('setLoading', false)
+      } catch (error) {
+        commit('setError', error.message)
+        commit('setLoading', false)
+        throw error
+      }
+    },
+    async updateAd ({commit}, {title, description, id}) {
+      commit('clearError')
+      commit('setLoading', true)
+      try {
+        await fb.firebase().ref('ads').child(id).update({
+          title, description
+        })
+        commit('updateAd', {
+          title, description, id
+        })
+        commit('setLoading', true)
       } catch (error) {
         commit('setError', error.message)
         commit('setLoading', false)
