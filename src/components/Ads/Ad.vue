@@ -17,7 +17,7 @@
             <v-btn class="success">Buy</v-btn>
           </v-card-actions>
         </v-card>
-        <div v-else="text-xs-center">
+        <div v-else class="text-xs-center">
           <v-progress-circular
             indeterminate
             :size="100"
@@ -40,7 +40,7 @@
         return this.$store.getters.adById(id)
       },
       loading () {
-        this.$store.getters.loading
+        return this.$store.getters.loading
       }
     },
     components: {

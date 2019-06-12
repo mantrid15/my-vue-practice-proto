@@ -98,13 +98,13 @@ export default {
       commit('clearError')
       commit('setLoading', true)
       try {
-        await fb.firebase().ref('ads').child(id).update({
+        await fb.database().ref('ads').child(id).update({
           title, description
         })
         commit('updateAd', {
           title, description, id
         })
-        commit('setLoading', true)
+        commit('setLoading', false)
       } catch (error) {
         commit('setError', error.message)
         commit('setLoading', false)

@@ -7,7 +7,7 @@
         <v-layout row>
           <v-flex xs12>
             <v-card-title>
-              <h1 class="text--primary">Edit Ad</h1>
+              <h1 class="text--primary">Edit ad</h1>
             </v-card-title>
           </v-flex>
         </v-layout>
@@ -46,31 +46,31 @@
   </v-dialog>
 </template>
 <script>
-	export default {
-	  props: ['ad'],
-	  data () {
-	    return {
-	      modal: false,
+export default {
+  props: ['ad'],
+  data () {
+    return {
+      modal: false,
       editedDescription: this.ad.description,
       editedTitle: this.ad.title
     }
   },
   methods: {
-	    onCancel () {
-	      this.editedDescription = this.ad.description
+    onCancel () {
+      this.editedDescription = this.ad.description
       this.editedTitle = this.ad.title
-	      this.modal = false
+      this.modal = false
     },
     onSave () {
-	      if (this.editedDescription !== '' && this.editedTitle !== '') {
-	        this.$store.dispatch('C', {
-	          title: this.editedTitle,
+      if (this.editedDescription !== '' && this.editedTitle !== '') {
+        this.$store.dispatch('updateAd', {
+          title: this.editedTitle,
           description: this.editedDescription,
           id: this.ad.id
         })
-	        this.modal = false
+        this.modal = false
       }
     }
   }
-	}
+}
 </script>
