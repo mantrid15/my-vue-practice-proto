@@ -21,15 +21,6 @@ new Vue({
   store,
   components: { App },
   template: '<App/>',
-  // created () {
-  //   fb.initializeApp({
-  //     apiKey: 'YOUR_FIREBASE_API_KEY',
-  //     authDomain: 'itc-ads-ac1a8.firebaseapp.com',
-  //     databaseURL: 'https://itc-ads-ac1a8.firebaseio.com',
-  //     projectId: 'itc-ads-ac1a8',
-  //     storageBucket: 'itc-ads-ac1a8.appspot.com',
-  //     messagingSenderId: '242182846483'
-  //   })
   created () {
     fb.initializeApp({
       apiKey: 'AIzaSyCne2-0cWfntWHgTVCpA1chlHalfJEhWkU',
