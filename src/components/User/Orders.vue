@@ -19,7 +19,7 @@
           >
             <v-list-tile-action>
               <v-checkbox
-                color="red"
+                color="success"
                 :input-value="order.done"
                 @change="markDone(order)"
               ></v-checkbox>

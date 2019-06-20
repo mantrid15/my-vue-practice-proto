@@ -27,11 +27,11 @@
           :key="ad.id"
         >
           <v-card>
-            <v-img
+            <v-card-media
               :src="ad.imageSrc"
               height="200px"
             >
-            </v-img>
+            </v-card-media>
             <v-card-title primary-title>
               <div>
                 <h3 class="headline mb-0">{{ad.title}}</h3>
@@ -80,8 +80,8 @@ export default {
 }
 </script>
 
-<style scoped>
-  .car-link {
+<style scoped lang="stylus">
+  .car-link
     position: absolute;
     bottom: 50px;
     left: 50%;
@@ -90,5 +90,4 @@ export default {
     padding: 5px 15px;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
-  }
 </style>

@@ -7,7 +7,7 @@
         <v-layout row>
           <v-flex xs12>
             <v-card-title>
-              <h1 class="text--primary">Do you want to buy it?</h1>
+              <h1 class="text--primary">Do you wan't to buy it?</h1>
             </v-card-title>
           </v-flex>
         </v-layout>
@@ -85,12 +85,12 @@
             adId: this.ad.id,
             ownerId: this.ad.ownerId
           })
-          .finally(() => {
-            this.name = ''
-            this.phone = ''
-            this.localLoading = false
-            this.modal = false
-          })
+            .finally(() => {
+              this.name = ''
+              this.phone = ''
+              this.localLoading = false
+              this.modal = false
+            })
         }
       }
     }

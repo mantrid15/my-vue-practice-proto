@@ -55,7 +55,7 @@
             <v-spacer></v-spacer>
             <v-btn
               :loading="loading"
-              :disabled="!valid || !image || loading"
+              :disabled="(!valid || !image) || loading"
               class="success"
               @click="createAd"
             >

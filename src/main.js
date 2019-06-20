@@ -3,9 +3,11 @@ import App from './App'
 import router from './router'
 import store from './store'
 import Vuetify from 'vuetify'
-import * as fb from 'firebase'
+import BuyModalComponent from '@/components/Shared/BuyModal'
+import * as fb from 'firebase/app'
 import 'vuetify/dist/vuetify.min.css'
-import BuyModalComponent from '@/components/Shared/ByModal'
+import './stylus/main.styl'
+// import colors from 'vuetify/es5/util/colors'
 
 Vue.use(Vuetify)
 Vue.component('app-buy-modal', BuyModalComponent)
@@ -19,6 +21,15 @@ new Vue({
   store,
   components: { App },
   template: '<App/>',
+  // created () {
+  //   fb.initializeApp({
+  //     apiKey: 'YOUR_FIREBASE_API_KEY',
+  //     authDomain: 'itc-ads-ac1a8.firebaseapp.com',
+  //     databaseURL: 'https://itc-ads-ac1a8.firebaseio.com',
+  //     projectId: 'itc-ads-ac1a8',
+  //     storageBucket: 'itc-ads-ac1a8.appspot.com',
+  //     messagingSenderId: '242182846483'
+  //   })
   created () {
     fb.initializeApp({
       apiKey: 'AIzaSyCne2-0cWfntWHgTVCpA1chlHalfJEhWkU',

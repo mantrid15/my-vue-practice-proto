@@ -51,9 +51,8 @@ export default {
         const imageExt = image.name.slice(image.name.lastIndexOf('.'))
 
         const fileData = await fb.storage().ref(`ads/${ad.key}.${imageExt}`).put(image)
-        // const imageSrc = await fileData.metadata.downloadURLs[0]
-
         const imageSrc = await fileData.ref.getDownloadURL()
+
         await fb.database().ref('ads').child(ad.key).update({
           imageSrc
         })
@@ -75,6 +74,7 @@ export default {
       commit('setLoading', true)
 
       const resultAds = []
+      // console.log(resultAds)
 
       try {
         const fbVal = await fb.database().ref('ads').once('value')

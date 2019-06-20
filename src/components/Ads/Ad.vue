@@ -3,17 +3,20 @@
     <v-layout row>
       <v-flex xs12>
         <v-card v-if="!loading">
-          <v-img
+          <v-card-media
             :src="ad.imageSrc"
             height="300px"
-          ></v-img>
+          ></v-card-media>
           <v-card-text>
             <h1 class="text--primary">{{ad.title}}</h1>
             <p>{{ad.description}}</p>
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <addEditAdModal :ad="ad" v-if="isOwner"></addEditAdModal>
+            <app-edit-ad-modal
+              :ad="ad"
+              v-if="isOwner"
+            ></app-edit-ad-modal>
             <app-buy-modal :ad="ad"></app-buy-modal>
           </v-card-actions>
         </v-card>
@@ -31,24 +34,24 @@
 </template>
 
 <script>
-import EditAdModal from './EditAdModal'
+  import EditAdModal from './EditAdModal'
 
-export default {
-  props: ['id'],
-  computed: {
-    ad () {
-      const id = this.id
-      return this.$store.getters.adById(id)
+  export default {
+    props: ['id'],
+    computed: {
+      ad () {
+        const id = this.id
+        return this.$store.getters.adById(id)
+      },
+      loading () {
+        return this.$store.getters.loading
+      },
+      isOwner () {
+        return this.ad.ownerId === this.$store.getters.user.id
+      }
     },
-    loading () {
-      return this.$store.getters.loading
-    },
-    isOwner () {
-      return this.ad.ownerId === this.$store.getters.user.id
+    components: {
+      appEditAdModal: EditAdModal
     }
-  },
-  components: {
-    addEditAdModal: EditAdModal
   }
-}
 </script>
