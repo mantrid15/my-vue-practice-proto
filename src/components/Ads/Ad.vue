@@ -3,10 +3,10 @@
     <v-layout row>
       <v-flex xs12>
         <v-card v-if="!loading">
-          <v-card-media
+          <v-img
             :src="ad.imageSrc"
             height="300px"
-          ></v-card-media>
+          ></v-img>
           <v-card-text>
             <h1 class="text--primary">{{ad.title}}</h1>
             <p>{{ad.description}}</p>
